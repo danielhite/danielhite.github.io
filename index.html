@@ -16,25 +16,27 @@ Welcome to my work in progress!...
 	let url = new URL(location.href);
 	let urlq = new URLSearchParams(url.search);
 	document.body.append(JSON.stringify([urlq]));
-	let href = urlq.get('href') || urlq.get('HREF');
+	let href = urlq.get('href') || urlq.get('HREF') || '';
+	href = String(href).trim();
 	if (href) {
 		document.title += 1;
 		let s = href;
 		try {
-			s = (new URL(href, location.origin)).search;
+			let urlhref = new URL(href, location.origin);
+			s = urlhref.search;
+			s = s || urlhref.hash;
+			s = s || urlhref.pathname;
+			s = trim(s);
 		} catch(e) {
-			document.title += '}' + s + '{';
 		}
+		document.title += 2 + '{' + s + '}';
 		
-		s = s || urlhref.hash;
-		s = s || urlhref.pathname;
-		s = trim(s);
 		if (s) {
-			document.title += 2;
+			document.title += 3;
 			document.body.append(s);
 			speechSynthesis.speak(new SpeechSynthesisUtterance(s));
 		} else {
-			document.title += 3;
+			document.title += 4;
 			// document.body.append(JSON.stringify([urlq]));
 		}
 	}
