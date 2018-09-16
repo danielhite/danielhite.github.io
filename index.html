@@ -8,10 +8,23 @@
 <style id="styleid">
 #top:target{white-space:pre-wrap;}
 </style>
-<script id="scriptid">
-</script>
 </head>
 <body id="top" contenteditable="true">
- work in progress 
+Welcome to my work in progress!...
+<script id="scriptid">
+	let url = new URL(location.href);
+	let urlq = new URLSearchParams(url.search);
+	let href = urlq.get('href') || urlq.get('HREF');
+	if (href) {
+		urlhref = new URL(href);
+		let s = urlhref.search;
+		s = s || urlhref.hash;
+		s = s || urlhref.pathname;
+		if (s) {
+			document.body.append(s);
+			speechSynthesis.speak(new SpeechSynthesisUtterance(s));
+		}
+	}
+</script>
 </body>
 </html> 
