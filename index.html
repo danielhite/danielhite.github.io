@@ -12,24 +12,29 @@
 <body id="top" contenteditable="true">
 Welcome to my work in progress!...
 <script id="scriptid">
-	document.title = 1;
+	document.title = 0;
 	let url = new URL(location.href);
 	let urlq = new URLSearchParams(url.search);
 	document.body.append(JSON.stringify([urlq]));
 	let href = urlq.get('href') || urlq.get('HREF');
 	if (href) {
-		document.title = 2;
-		let urlhref = new URL(href, document.baseURI);
-		let s = urlhref.search;
+		document.title += 1;
+		let s = href;
+		try {
+			s = (new URL(href, location.origin)).search;
+		} catch(e) {
+			document.title += '}' + s + '{';
+		}
+		
 		s = s || urlhref.hash;
 		s = s || urlhref.pathname;
 		s = trim(s);
 		if (s) {
-			document.title = 3;
+			document.title += 2;
 			document.body.append(s);
 			speechSynthesis.speak(new SpeechSynthesisUtterance(s));
 		} else {
-			document.title = 4;
+			document.title += 3;
 			// document.body.append(JSON.stringify([urlq]));
 		}
 	}
