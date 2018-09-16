@@ -20,11 +20,14 @@ Welcome to my work in progress!...
 		let s = urlhref.search;
 		s = s || urlhref.hash;
 		s = s || urlhref.pathname;
+		s = trim(s);
 		if (s) {
 			document.body.append(s);
 			speechSynthesis.speak(new SpeechSynthesisUtterance(s));
+		} else {
+			document.body.append(JSON.stringify([urlq]));
 		}
 	}
 </script>
 </body>
-</html> 
+</html>
