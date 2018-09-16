@@ -12,20 +12,25 @@
 <body id="top" contenteditable="true">
 Welcome to my work in progress!...
 <script id="scriptid">
+	document.title = 1;
 	let url = new URL(location.href);
 	let urlq = new URLSearchParams(url.search);
+	document.body.append(JSON.stringify([urlq]));
 	let href = urlq.get('href') || urlq.get('HREF');
 	if (href) {
+		document.title = 2;
 		urlhref = new URL(href);
 		let s = urlhref.search;
 		s = s || urlhref.hash;
 		s = s || urlhref.pathname;
 		s = trim(s);
 		if (s) {
+			document.title = 3;
 			document.body.append(s);
 			speechSynthesis.speak(new SpeechSynthesisUtterance(s));
 		} else {
-			document.body.append(JSON.stringify([urlq]));
+			document.title = 4;
+			// document.body.append(JSON.stringify([urlq]));
 		}
 	}
 </script>
