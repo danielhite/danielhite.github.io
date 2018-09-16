@@ -19,7 +19,7 @@ Welcome to my work in progress!...
 	let href = urlq.get('href') || urlq.get('HREF');
 	if (href) {
 		document.title = 2;
-		urlhref = new URL(href);
+		let urlhref = new URL(href);
 		let s = urlhref.search;
 		s = s || urlhref.hash;
 		s = s || urlhref.pathname;
