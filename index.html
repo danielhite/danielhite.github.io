@@ -17,8 +17,10 @@ and we get a surprising result here...
 	// document.title = 0;
 	let url = new URL(location.href);
 	let urlq = new URLSearchParams(url.search);
-	document.body.append(JSON.stringify([urlq]));
+	// document.body.append(JSON.stringify([urlq]));
+	
 	let href = urlq.get('href') || urlq.get('HREF') || '';
+	
 	href = String(href).trim();
 	if (href) {
 		// document.title += 1;
