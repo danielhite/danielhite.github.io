@@ -36,10 +36,8 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign says
 			s = urlhref.search;
 			if (s.startsWith('?')) s = s.slice(1);
 			if s.includes('=') {
-				try {
-					urlqhref = new URLSearchParams(urlhref.search);
-					s = [...urlqhref].flat().join(', ');
-				} catch(e) {};
+				urlqhref = new URLSearchParams(urlhref.search);
+				s = [...urlqhref].flat().join(', ');
 			}
 			s = s.trim() || urlhref.hash;
 			if (s.startsWith('#')) s = s.slice(1);
