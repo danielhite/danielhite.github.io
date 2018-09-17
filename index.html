@@ -36,10 +36,7 @@ Welcome to my work in progress!...
 			document.title += 3;
 			self.document.title = s;
 			
-			document.body.insertAdjacentHTML('beforeend', 
-				`<br><button type=button onclick="${
-					speechSynthesis.speak(new SpeechSynthesisUtterance(document.title));
-				}">Say Wha?!</button><br>`);
+			document.body.insertAdjacentHTML('beforeend', `<br><button type=button onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(document.title));">Say Wha?!</button><br>`);
 		} else {
 			document.title += 4;
 			// document.body.append(JSON.stringify([urlq]));
