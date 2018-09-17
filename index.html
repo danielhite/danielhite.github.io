@@ -18,18 +18,18 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign says
 	
 <script id="scriptid">
 	// document.title = 0;
-	let url = new URL(location.href);
-	let urlq = new URLSearchParams(url.search);
+	var url = new URL(location.href);
+	var urlq = new URLSearchParams(url.search);
 	// document.body.append(JSON.stringify([urlq]));
 	
-	let href = urlq.get('href') || urlq.get('HREF') || '';
+	var href = urlq.get('href') || urlq.get('HREF') || '';
 	
 	href = String(href).trim();
 	if (href) {
 		// document.title += 1;
-		let s = href;
-		let urlhref = '';
-		let errormess = '';
+		var s = href;
+		var urlhref = '';
+		var errormess = '';
 		try {
 			urlhref = new URL(href, location.origin);
 			s = urlhref.search;
