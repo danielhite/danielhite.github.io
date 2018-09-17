@@ -26,6 +26,7 @@ Welcome to my work in progress!...
 			s = urlhref.search;
 			s = s || urlhref.hash;
 			s = s || urlhref.pathname;
+			if (s.startsWith('/')) s = s.slice(1);
 			s = trim(s);
 		} catch(e) {
 		}
@@ -33,8 +34,12 @@ Welcome to my work in progress!...
 		
 		if (s) {
 			document.title += 3;
-			document.body.append(s);
-			speechSynthesis.speak(new SpeechSynthesisUtterance(s));
+			self.document.title = s;
+			
+			document.body.insertAdjacentHTML('beforeend', 
+				`<br><button type=button onclick="${
+					speechSynthesis.speak(new SpeechSynthesisUtterance(document.title));
+				}">Say Wha?!</button><br>`);
 		} else {
 			document.title += 4;
 			// document.body.append(JSON.stringify([urlq]));
