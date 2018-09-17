@@ -70,7 +70,7 @@ danhite dot me slash questionmark compute equalsign document dot title
 		}
 	}
 	
-	s = urlq.get('compute') || urlq.get('Compute') || urlq.get('COMPUTE') || '';
+	s = urlq.get('compute') || urlq.get('Compute') || urlq.get('COMPUTE') || null;
 	if (null !== s) {
 		inp.value = s;
 		but.click();
