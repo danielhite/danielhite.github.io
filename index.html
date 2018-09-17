@@ -35,7 +35,7 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign says
 			urlhref = new URL(href, location.origin);
 			s = urlhref.search;
 			if (s.startsWith('?')) s = s.slice(1);
-			if s.includes('=') {
+			if (s.includes('=')) {
 				urlqhref = new URLSearchParams(urlhref.search);
 				s = [...urlqhref].flat().join(', ');
 			}
