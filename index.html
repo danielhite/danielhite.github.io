@@ -10,16 +10,18 @@
 </style>
 </head>
 <body id="top" contenteditable="true">
-Welcome to my work in progress!...
+Welcome to my work playground!
+I can say "hey Siri danhite dot me slash questionmark this plus and plus that
+and we get a surprising result here...
 <script id="scriptid">
-	document.title = 0;
+	// document.title = 0;
 	let url = new URL(location.href);
 	let urlq = new URLSearchParams(url.search);
 	document.body.append(JSON.stringify([urlq]));
 	let href = urlq.get('href') || urlq.get('HREF') || '';
 	href = String(href).trim();
 	if (href) {
-		document.title += 1;
+		// document.title += 1;
 		let s = href;
 		try {
 			let urlhref = new URL(href, location.origin);
@@ -30,15 +32,15 @@ Welcome to my work in progress!...
 			s = trim(s);
 		} catch(e) {
 		}
-		document.title += 2 + '{' + s + '}';
+		// document.title += 2 + '{' + s + '}';
 		
 		if (s) {
-			document.title += 3;
+			// document.title += 3;
 			self.document.title = s;
 			
 			document.body.insertAdjacentHTML('beforeend', `<br><button type=button onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(document.title));">Say Wha?!</button><br>`);
 		} else {
-			document.title += 4;
+			// document.title += 4;
 			// document.body.append(JSON.stringify([urlq]));
 		}
 	}
