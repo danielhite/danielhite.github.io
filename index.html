@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>title</title>
+<title>playground</title>
 <style id="styleid">
 :not(#top:target){white-space:pre-wrap;}
 </style>
@@ -18,8 +18,23 @@ so I've added a fun tracking to the title and also
 (simple version e.g.) I can say "
 hey Siri 
 danhite dot me slash questionmark href equal-sign Simon plus-sign says
-" and we get a surprising pushbutton result here...
-	
+" and we will get a surprising pushbutton result here, at top.
+<br>
+<form id="formid" contenteditable="false" onsubmit="var r; try{r=self.eval(inp.value);} catch(e){r=e.message}; out.value=String(r); return false;">
+<button id="but" type="submit">eval</button>
+<br><br>
+<input id="inp" type="text" size=80 tabindex="-1" name="X" value="window.document.lastModified; ">
+<br><br>
+<output id="out" form="formid" style="white-space: pre-wrap;" onclick="inp.value=out.value;"></output><br>
+</form>
+<br>
+<script>
+let s = url.searchParams.get("X");
+if (null !== s) {
+  inp.value = s;
+  but.click();
+}
+</script>
 <script id="scriptid">
 	// document.title = 0;
 	var url = new URL(location.href);
@@ -57,7 +72,7 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign says
 			// document.title += 3;
 			document.title = s;
 			
-			document.body.insertAdjacentHTML('beforeend', `<br><button type=button onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(document.title));">Say Wha?!</button><br>`);
+			document.body.insertAdjacentHTML('afterbegin', `<br><br><button type=button contenteditable="false" onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(document.title));">Say Wha?!</button><br>`);
 		} else {
 			// document.title += 4;
 			// document.body.append(JSON.stringify([urlq]));
