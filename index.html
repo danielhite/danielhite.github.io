@@ -30,11 +30,13 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign said
 		let s = href;
 		try {
 			let urlhref = new URL(href, location.origin);
-			s = decodeURIComponent(urlhref.search);
-			s = s || urlhref.hash;
-			s = s || urlhref.pathname;
+			s = urlhref.search;
+			if (s.startsWith('?')) s = s.slice(1);
+			s = s.trim() || urlhref.hash;
+			if (s.startsWith('#')) s = s.slice(1);
+			s = s.trim() || urlhref.pathname;
 			if (s.startsWith('/')) s = s.slice(1);
-			s = trim(s);
+			s = trim(unescape(s));
 		} catch(e) {
 		}
 		// document.title += 2 + '{' + s + '}';
