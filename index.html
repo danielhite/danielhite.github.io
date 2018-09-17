@@ -28,8 +28,10 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign said
 	if (href) {
 		// document.title += 1;
 		var s = href;
+		var urlhref = '';
+		var errormess = '';
 		try {
-			let urlhref = new URL(href, location.origin);
+			urlhref = new URL(href, location.origin);
 			s = urlhref.search;
 			if (s.startsWith('?')) s = s.slice(1);
 			s = s.trim() || urlhref.hash;
@@ -38,6 +40,7 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign said
 			if (s.startsWith('/')) s = s.slice(1);
 			s = trim(unescape(s));
 		} catch(e) {
+			errormess = e.name + ': ' + e.message;
 		}
 		// document.title += 2 + '{' + s + '}';
 		
