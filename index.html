@@ -18,18 +18,18 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign said
 	
 <script id="scriptid">
 	// document.title = 0;
-	var url = new URL(location.href);
-	var urlq = new URLSearchParams(url.search);
+	let url = new URL(location.href);
+	let urlq = new URLSearchParams(url.search);
 	// document.body.append(JSON.stringify([urlq]));
 	
-	var href = urlq.get('href') || urlq.get('HREF') || '';
+	let href = urlq.get('href') || urlq.get('HREF') || '';
 	
 	href = String(href).trim();
 	if (href) {
 		// document.title += 1;
-		var s = href;
-		var urlhref = '';
-		var errormess = '';
+		let s = href;
+		let urlhref = '';
+		let errormess = '';
 		try {
 			urlhref = new URL(href, location.origin);
 			s = urlhref.search;
@@ -38,7 +38,7 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign said
 			if (s.startsWith('#')) s = s.slice(1);
 			s = s.trim() || urlhref.pathname;
 			if (s.startsWith('/')) s = s.slice(1);
-			s = trim(unescape(s));
+			s = unescape(s).trim();
 		} catch(e) {
 			errormess = e.name + ': ' + e.message;
 		}
@@ -46,12 +46,11 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign said
 		
 		if (s) {
 			// document.title += 3;
-			self.document.title = s;
+			document.title = s;
 			
 			document.body.insertAdjacentHTML('beforeend', `<br><button type=button onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(document.title));">Say Wha?!</button><br>`);
 		} else {
 			// document.title += 4;
-			self.status = s;
 			// document.body.append(JSON.stringify([urlq]));
 		}
 	}
