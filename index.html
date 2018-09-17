@@ -74,6 +74,11 @@ danhite dot me slash questionmark compute equalsign document dot title
 	if (null !== s) {
 		inp.value = s;
 		but.click();
+	} else {
+		s = url.hash;
+		if (s.startsWith('#')) s = s.slice(1);
+		s = s.trim();
+		if (s) inp.value = s;
 	}
 </script>
 </body>
