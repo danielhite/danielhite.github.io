@@ -24,13 +24,6 @@ danhite dot me slash questionmark href equal-sign Simon plus-sign says
 <br><input id="inp" type="text" size=80 tabindex="-1" name="X" value="window.document.lastModified; ">
 <br><output id="out" form="formid" style="white-space: pre-wrap;" onclick="inp.value=out.value;"></output>
 </form>
-<script>
-let s = url.searchParams.get("X");
-if (null !== s) {
-  inp.value = s;
-  but.click();
-}
-</script>
 <script id="scriptid">
 	// document.title = 0;
 	var url = new URL(location.href);
@@ -73,6 +66,12 @@ if (null !== s) {
 			// document.title += 4;
 			// document.body.append(JSON.stringify([urlq]));
 		}
+	}
+	
+	s = urlq.get("X");
+	if (null !== s) {
+		inp.value = s;
+		but.click();
 	}
 </script>
 </body>
