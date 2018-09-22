@@ -51,8 +51,7 @@ open https colon slash slash danhite dot me slash hashtag camel case is fun
 			s = urlhref.search;
 			if (s.startsWith('?')) s = s.slice(1);
 			if (s.includes('=')) {
-				urlqhref = new URLSearchParams(urlhref.search);
-				s = [...urlqhref].flat().join(', ');
+				s = [... urlhref.searchParams].flat().join(', ');
 			}
 			s = s.trim() || urlhref.hash;
 			if (s.startsWith('#')) s = s.slice(1);
@@ -84,6 +83,17 @@ open https colon slash slash danhite dot me slash hashtag camel case is fun
 		if (s.startsWith('#')) s = s.slice(1);
 		s = s.trim();
 		if (s) inp.value = s;
+	}
+	let cb = urlq.get('x-success');
+	if (cb) {
+		let urlCallback = '';
+		try {
+			urlCallback = new URL(cb);
+			if (urlCallback) {
+				urlCallback.searchParams.append('output', String(out.value));
+				self. location.href = urlCallback.href;
+			} // NB shortcuts homescreen ~app synthesizes sans user input or permission
+		} catch(e) {};
 	}
 </script>
 </body>
