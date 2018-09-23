@@ -34,15 +34,24 @@ open https colon slash slash danhite dot me slash hashtag camel case is fun
 <script id="scriptid">
 	// document.title = 0;
 	var url = new URL(location.href);
-	var urlq = new URLSearchParams(url.search);
+	var urlq = url.searchParams;
 	// document.body.append(JSON.stringify([urlq]));
+	var hash = url.hash;
+	var s;
+	
+	s = hash;
+	if (s.startsWith('#')) s = s.slice(1);
+	if (!s.includes(' ')) {
+		s = s.replace(/\%20/g, ' ');
+	}
+	s = s.trim();
 	
 	var href = urlq.get('href') || urlq.get('HREF') || '';
 	
 	href = String(href).trim();
 	if (href) {
 		// document.title += 1;
-		var s = href;
+		s = href;
 		var urlhref = '';
 		var errormess = '';
 		var urlqhref = '';
@@ -79,10 +88,7 @@ open https colon slash slash danhite dot me slash hashtag camel case is fun
 		inp.value = s;
 		but.click();
 	} else {
-		s = url.hash;
-		if (s.startsWith('#')) s = s.slice(1);
-		s = s.trim();
-		if (s) inp.value = s;
+		if (hash) inp.value = hash;
 	}
 	let cb = urlq.get('x-success');
 	if (cb) {
