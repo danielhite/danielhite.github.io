@@ -33,18 +33,24 @@ open https colon slash slash danhite dot me slash hashtag camel case is fun
 </form>
 <script id="scriptid">
 	// document.title = 0;
-	var url = new URL(location.href);
-	var urlq = url.searchParams;
-	// document.body.append(JSON.stringify([urlq]));
-	var hash = url.hash;
-	var s;
+	self.url = new URL(location.href);
+	self.urlq = url.searchParams;
+	self.hash = url.hash;
+	
+	self.hashID; // future scheme for preserve css && id semantics
+	var s; // temp string; var when used is ~debug vs let but self.varID is ~global, ie scoped intent
 	
 	s = hash;
-	if (s.startsWith('#')) s = s.slice(1);
-	if (!s.includes(' ')) {
-		s = s.replace(/\%20/g, ' ');
+	if (s) {
+		if (s.startsWith('#')) s = s.slice(1);
+		if (!s.includes(' ')) {
+			s = s.replace(/\%20/g, ' ');
+		}
+		if (s.includes(' ')) {
+			hashID = s.split(' ')[0];
+		}
 	}
-	s = s.trim();
+	hash = s.trim();
 	
 	var href = urlq.get('href') || urlq.get('HREF') || '';
 	
