@@ -103,6 +103,7 @@ open https colon slash slash danhite dot me slash hashtag camel case is fun
 			urlCallback = new URL(cb);
 			if (urlCallback) {
 				urlCallback.searchParams.append('output', String(out.value));
+				urlCallback.search = urlCallback.search.replace(/\+/g, ' ');
 				self. location.href = urlCallback.href;
 			} // NB shortcuts homescreen ~app synthesizes sans user input or permission
 		} catch(e) {};
